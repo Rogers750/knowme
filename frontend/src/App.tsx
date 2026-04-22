@@ -3,7 +3,7 @@ import Chat from "./components/Chat";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-const navLinks = ["Experience", "Skills", "About", "Contact"];
+const navLinks = ["Experience", "Skills", "Projects", "About", "Contact"];
 
 const stats = [
   { value: "$300K+", label: "Infrastructure saved" },
@@ -205,6 +205,54 @@ const skillGroups = [
       "JWT",
       "Git",
     ],
+  },
+];
+
+const personalProjects = [
+  {
+    name: "Meshtheorem",
+    tagline: "Virtual try-on & shoppable wardrobe",
+    description:
+      "Built a mobile app where users upload a photo and try on clothes virtually using AI-powered VITON (Virtual Try-On). The app overlays garments onto the user's body in real time, and each item worn becomes a tappable link — redirecting to the exact product page to shop it directly.",
+    stack: ["React Native (Expo)", "FastAPI", "Supabase", "Fashn AI", "Python"],
+    highlights: [
+      "AI-powered automatic virtual try-on using Fashn AI's VITON model",
+      "Tap any garment in the image to get direct shopping links",
+      "Supabase for auth, storage, and real-time garment catalogue",
+      "FastAPI backend handling image processing and Fashn AI orchestration",
+    ],
+    color: "#a78bfa",
+    status: "Live",
+  },
+  {
+    name: "PDF Cutter",
+    tagline: "Trim any PDF to an exact page range",
+    description:
+      "A clean web tool where you open any PDF, preview it inline, specify a start and end page, and instantly download a new PDF containing only that range — no accounts, no uploads to third-party servers, processed entirely in-browser.",
+    stack: ["React", "PDF.js", "pdf-lib", "Vite"],
+    highlights: [
+      "In-browser PDF rendering and preview with PDF.js",
+      "Client-side page extraction using pdf-lib — file never leaves your device",
+      "Instant download of the trimmed PDF",
+      "Handles large PDFs without page-count limits",
+    ],
+    color: "#38bdf8",
+    status: "Live",
+  },
+  {
+    name: "Path18",
+    tagline: "AI health report interpreter",
+    description:
+      "Upload any medical lab report (blood work, lipid panel, thyroid, etc.) and Path18 extracts every health metric, explains what each one means in plain language, flags values outside normal range, and gives a clear summary of your overall health picture.",
+    stack: ["React", "FastAPI", "LLM (GPT / Claude)", "PDF parsing", "Python"],
+    highlights: [
+      "Parses uploaded medical PDFs and extracts all numeric health markers",
+      "LLM explains each metric in plain English — no medical jargon",
+      "Flags out-of-range values with severity indicators",
+      "Full plain-language health summary at the top of the report",
+    ],
+    color: "#34d399",
+    status: "Live",
   },
 ];
 
@@ -538,6 +586,85 @@ export default function App() {
                       }}
                     >
                       {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Personal Projects ──────────────────────────────────────────── */}
+      <section id="projects" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-14">
+            <p className="text-xs font-mono text-accent tracking-wide uppercase mb-3">
+              Side work
+            </p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Personal Projects
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {personalProjects.map((project) => (
+              <div
+                key={project.name}
+                className="bg-surface border border-border rounded-xl p-6 flex flex-col hover:border-border-up transition-colors"
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3 className="font-heading text-lg font-semibold text-white">
+                    {project.name}
+                  </h3>
+                  <span
+                    className="flex-shrink-0 text-[10px] font-mono font-medium px-2 py-0.5 rounded-full"
+                    style={{
+                      color: project.color,
+                      backgroundColor: `${project.color}18`,
+                    }}
+                  >
+                    {project.status}
+                  </span>
+                </div>
+
+                <p
+                  className="text-xs font-mono font-medium mb-3"
+                  style={{ color: project.color }}
+                >
+                  {project.tagline}
+                </p>
+
+                <p className="text-sm text-text-dim leading-relaxed mb-5">
+                  {project.description}
+                </p>
+
+                {/* Highlights */}
+                <ul className="space-y-2 mb-6 flex-1">
+                  {project.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2 text-xs text-text-dim leading-relaxed">
+                      <span
+                        className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: project.color }}
+                      />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Stack */}
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-border">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-[11px] px-2 py-0.5 rounded-md border text-text-muted"
+                      style={{
+                        borderColor: `${project.color}20`,
+                        backgroundColor: `${project.color}08`,
+                      }}
+                    >
+                      {tech}
                     </span>
                   ))}
                 </div>
