@@ -1,38 +1,46 @@
-export const config = { runtime: "edge" };
+import type { IncomingMessage, ServerResponse } from "http";
 
-export default async function handler(req: Request): Promise<Response> {
+export default async function handler(
+  req: IncomingMessage,
+  res: ServerResponse
+) {
   if (req.method !== "POST") {
-    return new Response("Method not allowed", { status: 405 });
+    res.statusCode = 405;
+    res.end("Method not allowed");
+    return;
   }
 
   const apiKey = process.env.DEEPSEEK_API_KEY;
   if (!apiKey) {
-    return json({ error: "API key not configured" }, 500);
+    res.statusCode = 500;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ error: "API key not configured" }));
+    return;
   }
 
   try {
-    const body = await req.json();
-    const upstream = await fetch(
-      "https://api.deepseek.com/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify(body),
-      }
-    );
-    const data = await upstream.json();
-    return json(data, upstream.status);
-  } catch {
-    return json({ error: "Failed to reach DeepSeek" }, 500);
-  }
-}
+    const chunks: Buffer[] = [];
+    for await (const chunk of req) {
+      chunks.push(Buffer.from(chunk as ArrayBuffer));
+    }
+    const body = JSON.parse(Buffer.concat(chunks).toString());
 
-function json(data: unknown, status = 200): Response {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { "Content-Type": "application/json" },
-  });
+    const upstream = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await upstream.json();
+    res.statusCode = upstream.status;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(data));
+  } catch {
+    res.statusCode = 500;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ error: "Failed to reach DeepSeek" }));
+  }
 }
