@@ -1,6 +1,7 @@
 {
   "name": "knowme-portfolio",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "@types/node": "^22"
   }
