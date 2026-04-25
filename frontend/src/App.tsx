@@ -113,7 +113,7 @@ const experience = [
     highlights: [
       {
         text: "Raised seed funding; built and managed a 12-member cross-functional team from the ground up",
-        metric: "₹50L+ raised",
+        metric: "₹5 Lakhs+ raised",
         color: "#fbbf24",
       },
       {

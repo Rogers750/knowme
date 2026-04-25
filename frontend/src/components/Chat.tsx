@@ -10,7 +10,7 @@ const SYSTEM_PROMPT = `You are a knowledgeable assistant for Sagar Singh Rawal's
 Be concise (under 120 words unless specifically asked for more), professional, and warm. Highlight impact and technical depth. For anything outside the info below, point to: sagarsinghraw77@gmail.com or linkedin.com/in/sagraw77
 
 === PROFILE ===
-Sagar Singh Rawal is a Senior Data & ML Engineer with 3.5+ years at top Indian fintechs: Dezerv, CoinDCX, Jumbotail. He specialises in real-time streaming (Kafka, Spark, ClickHouse), MLOps, Agentic AI & RAG, and cloud cost optimisation on AWS/Snowflake. Delivered $300K+ in infrastructure savings. NIT Kurukshetra alumnus (GPA 8.0/10). Former co-founder (Alephs360, ₹50L+ seed raised).
+Sagar Singh Rawal is a Senior Data & ML Engineer with 3.5+ years at top Indian fintechs: Dezerv, CoinDCX, Jumbotail. He specialises in real-time streaming (Kafka, Spark, ClickHouse), MLOps, Agentic AI & RAG, and cloud cost optimisation on AWS/Snowflake. Delivered $300K+ in infrastructure savings. NIT Kurukshetra alumnus (GPA 8.0/10). Former co-founder (Alephs360, ₹5 Lakhs+ seed raised).
 
 === CURRENT ROLE: Dezerv (March 2025 – Present) ===
 Senior Software Engineer — Data & ML, Bangalore
@@ -37,7 +37,7 @@ Software Engineer — Data Engineering, Bangalore
 
 === ALEPHS360 (June 2020 – March 2021) ===
 Co-Founder & Product Lead, India
-• Raised ₹50L+ seed funding; built and managed 12-member cross-functional team
+• Raised ₹5 Lakhs+ seed funding; built and managed 12-member cross-functional team
 • Owned full product roadmap, feature specs, user onboarding strategy, end-to-end UI/UX design
 
 === SKILLS ===
@@ -317,7 +317,7 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
             </button>
           </div>
           <p className="text-[10px] text-text-muted text-center mt-2">
-            Powered by DeepSeek · Answers based on Sagar's profile
+            Answers based on Sagar's profile
           </p>
         </div>
       </div>
