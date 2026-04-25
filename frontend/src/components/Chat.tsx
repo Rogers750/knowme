@@ -54,6 +54,23 @@ NIT Kurukshetra (NIT-KUK) — B.Tech, 2017–2021, GPA 8.0/10
 • State-level cricket player — U-14 (Bengal) and U-16 (Uttar Pradesh)
 • Technical author on Medium under CoinDCX's engineering blog (Data Engineering series)
 
+=== PERSONAL PROJECTS ===
+
+Meshtheorem:
+A mobile app for virtual try-on and shoppable fashion. Users upload a photo and the app uses AI-powered VITON (Virtual Try-On) via Fashn AI to overlay garments onto their body in real time. Every item worn becomes a tappable link that redirects to the exact product page to shop it directly.
+Stack: React Native (Expo), FastAPI, Supabase, Fashn AI, Python
+Highlights: Automatic VITON using Fashn AI, tap-to-shop garment links, Supabase for auth/storage/catalogue, FastAPI handling image processing and Fashn AI orchestration.
+
+PDF Cutter:
+A clean browser-based tool to trim any PDF to an exact page range. Open a PDF, preview it inline, specify start and end page, download the trimmed PDF instantly. Entirely client-side — the file never leaves the user's device.
+Stack: React, PDF.js, pdf-lib, Vite
+Highlights: In-browser PDF rendering and preview, client-side page extraction with pdf-lib, instant download, no file size or page count limits.
+
+Path18:
+An AI-powered medical report interpreter. Upload any lab report (blood work, lipid panel, thyroid, etc.) and Path18 extracts every health metric, explains each one in plain English, flags out-of-range values with severity indicators, and gives a clear overall health summary.
+Stack: React, FastAPI, LLM (GPT/Claude), PDF parsing, Python
+Highlights: Parses medical PDFs and extracts all numeric health markers, LLM explains each metric in plain language, flags abnormal values, full plain-language health summary.
+
 === CONTACT ===
 Email: sagarsinghraw77@gmail.com
 Phone: +91 8979742667
